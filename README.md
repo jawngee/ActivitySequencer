@@ -9,31 +9,31 @@ It has been expanded upon to allow for the separation of the running of activiti
 
 ```objc
 ILActivitySequence *sequence=[ILActivitySequence activitySequence];
-   [sequence addActivityLabeled:@"Step 1"
-                          block:^(ILActivity *activity, id previousResult, ILActivityProgressBlock progressBlock, ILActivityCompleteBlock completeBlock) {
-                              NSLog(@"Running activity %@",activity.label);
-                              
-                              // report some progress
-                              progressBlock(activity, 1.0f);
-                              
-                              // We are done so call the completeBlock, passing this activity's label to the next step
-                              completeBlock(YES, activity.label, nil);
-                          }];
-   
-   [sequence addActivityLabeled:@"Step 2"
-                          block:^(ILActivity *activity, id previousResult, ILActivityProgressBlock progressBlock, ILActivityCompleteBlock completeBlock) {
-                              NSLog(@"Previous activity %@",previousResult);
-                              
-                              NSLog(@"Running activity %@",activity.label);
-                              
-                              // report some progress
-                              progressBlock(activity, 1.0f);
-                              
-                              // We are done so call the completeBlock, passing this activity's label to the next step
-                              completeBlock(YES, activity.label, nil);
-                          }];
-   
-   [sequence run];
+[sequence addActivityLabeled:@"Step 1"
+                       block:^(ILActivity *activity, id previousResult, ILActivityProgressBlock progressBlock, ILActivityCompleteBlock completeBlock) {
+                           NSLog(@"Running activity %@",activity.label);
+                           
+                           // report some progress
+                           progressBlock(activity, 1.0f);
+                           
+                           // We are done so call the completeBlock, passing this activity's label to the next step
+                           completeBlock(YES, activity.label, nil);
+                       }];
+
+[sequence addActivityLabeled:@"Step 2"
+                       block:^(ILActivity *activity, id previousResult, ILActivityProgressBlock progressBlock, ILActivityCompleteBlock completeBlock) {
+                           NSLog(@"Previous activity %@",previousResult);
+                           
+                           NSLog(@"Running activity %@",activity.label);
+                           
+                           // report some progress
+                           progressBlock(activity, 1.0f);
+                           
+                           // We are done so call the completeBlock, passing this activity's label to the next step
+                           completeBlock(YES, activity.label, nil);
+                       }];
+
+[sequence run];
 ```
 
 The output looks like:
@@ -58,29 +58,29 @@ To help insure separation of concerns and to keep your UI out of your model code
 
 ```objc
 ILActivitySequence *sequence=[ILActivitySequence activitySequence];
-   [sequence addActivityLabeled:@"Step 1"
-                          block:^(ILActivity *activity, id previousResult, ILActivityProgressBlock progressBlock, ILActivityCompleteBlock completeBlock) {
-                              NSLog(@"Running activity %@",activity.label);
-                              
-                              // report some progress
-                              progressBlock(activity, 1.0f);
-                              
-                              // We are done so call the completeBlock, passing this activity's label to the next step
-                              completeBlock(YES, activity.label, nil);
-                          }];
-   
-   [sequence addActivityLabeled:@"Step 2"
-                          block:^(ILActivity *activity, id previousResult, ILActivityProgressBlock progressBlock, ILActivityCompleteBlock completeBlock) {
-                              NSLog(@"Previous activity %@",previousResult);
-                              
-                              NSLog(@"Running activity %@",activity.label);
-                              
-                              // report some progress
-                              progressBlock(activity, 1.0f);
-                              
-                              // We are done so call the completeBlock, passing this activity's label to the next step
-                              completeBlock(YES, activity.label, nil);
-                          }];
+[sequence addActivityLabeled:@"Step 1"
+                       block:^(ILActivity *activity, id previousResult, ILActivityProgressBlock progressBlock, ILActivityCompleteBlock completeBlock) {
+                           NSLog(@"Running activity %@",activity.label);
+                           
+                           // report some progress
+                           progressBlock(activity, 1.0f);
+                           
+                           // We are done so call the completeBlock, passing this activity's label to the next step
+                           completeBlock(YES, activity.label, nil);
+                       }];
+
+[sequence addActivityLabeled:@"Step 2"
+                       block:^(ILActivity *activity, id previousResult, ILActivityProgressBlock progressBlock, ILActivityCompleteBlock completeBlock) {
+                           NSLog(@"Previous activity %@",previousResult);
+                           
+                           NSLog(@"Running activity %@",activity.label);
+                           
+                           // report some progress
+                           progressBlock(activity, 1.0f);
+                           
+                           // We are done so call the completeBlock, passing this activity's label to the next step
+                           completeBlock(YES, activity.label, nil);
+                       }];
                      
 [sequence run:^(ILActivity *activity, NSInteger totalSteps) {
         NSLog(@"Step %d - '%@' started.",activity.step,activity.label);
