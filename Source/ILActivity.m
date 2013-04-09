@@ -58,6 +58,9 @@
 
 -(void)run:(id)previousResult progress:(ILActivityProgressBlock)progressBlock complete:(ILActivityCompleteBlock)completeBlock
 {
+    if (!progressBlock)
+        progressBlock=^(ILActivity *activity, float progress){};
+    
     self.activityBlock(self, previousResult, progressBlock, ^(BOOL succeeded, id result, NSError *error){
         if (completeBlock)
             completeBlock(succeeded, result, error);
