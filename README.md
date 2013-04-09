@@ -110,6 +110,11 @@ The output looks like:
 	Running activity Step 2
 	Step 2 - 'Step 2' progress: 1.000000.
 	Step 2 - 'Step 2' ended.
+	
+## Xcode Template ##
+You can install the Xcode template by copying the **Activity Sequence** folder in the **Xcode Templates** folder to:
+
+	~/Library/Developer/Xcode/Templates/File Templates
 
 ## CocoaPods ##
 

@@ -61,7 +61,7 @@
 
 +(ILActivitySequence *)activitySequence
 {
-    return [[[ILActivitySequence alloc] init] autorelease];
+    return [[[[self class] alloc] init] autorelease];
 }
 
 -(void)addActivityLabeled:(NSString *)label block:(ILActivityBlock)activityBlock
